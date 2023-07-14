@@ -8,7 +8,7 @@ function App() {
 
   function addMovies() {
     let currentInputText = inputRef.current.value || undefined;
-    setMovies([...movies, { text: currentInputText, id: Date.now() }]);
+    setMovies([...movies, { text: currentInputText, id: Date.now()}]);
   }
 
   function handleDelete(id) {
@@ -18,7 +18,12 @@ function App() {
       })
     );
   }
+  // function handleStatus(id) {
+  //   // Get the movie object from the array of movies using the id
 
+  //   // Flip the status attribute of the movie
+    
+  // }
   return (
     <>
       <div className="container board mt-3">
@@ -50,13 +55,26 @@ function App() {
                 aria-label="ToDoInput"
               />
               <div className="input-group-append">
-                <button
+                { 
+              // Making the add button into a dropdown
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                >
+                  Add Movie
+                </button>
+                <ul class="dropdown-menu">
+                  <li><button class="dropdown-item" href="#">Romance</button></li>
+                  <li><button class="dropdown-item" href="#">Action</button></li>
+                  <li><button class="dropdown-item" href="#">Comedy</button></li>
+                </ul>
+              </div>
+                /* <button
                   onClick={addMovies}
                   className="btn btn-primary h-100 m-0"
                   type="button"
                 >
                   Add
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
