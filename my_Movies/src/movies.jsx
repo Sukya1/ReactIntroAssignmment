@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./movies.css";
 import PropTypes from "prop-types";
 
-function Movies({ text, handleDelete, handleStatus}) {
+function Movies({ text, genre, handleDelete}) {
   const [isCompleted, setIsCompleted] = useState(false);
   const [isWatched, setIsWatched] = useState(false)
   return (
@@ -18,11 +18,12 @@ function Movies({ text, handleDelete, handleStatus}) {
             // style={isCompleted ? { textDecoration: "line-through" } : {}}
             className="text"
           >
-            {text}
+            <p> Movie: {text}</p>
+            <p> Genre: {genre}</p>
           </p>
         </div>
         <div className="row">
-          <div className="col-md-1 p-0">
+          <div className="col-12 p-0">
             <button
               onClick={handleDelete}
               className="btn btn-danger w-50 px-0 m-0 my-1"
@@ -30,7 +31,7 @@ function Movies({ text, handleDelete, handleStatus}) {
               Delete
             </button>
           </div>
-          <div className="col-md-1 p-0">
+          <div className="col-12 p-0">
           <button
              onClick={() => setIsWatched(!isWatched)}
              className="btn btn-primary w-50 px-0 m-0 my-1">
@@ -45,7 +46,9 @@ function Movies({ text, handleDelete, handleStatus}) {
 }
 
 Movies.defaultProps = {
-  text: "Untitled To Do Item",
+  text: "Unamed Movie",
+  // This does not work because amain choose as an input
+  genre: "unknown", 
 };
 
 Movies.propTypes = {
